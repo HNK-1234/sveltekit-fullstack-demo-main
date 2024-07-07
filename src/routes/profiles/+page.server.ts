@@ -1,5 +1,5 @@
 import { createPool } from '@vercel/postgres';
-import { POSTGRES_URL } from '$env/static/private'; // Ensure this is correctly set in your environment variables
+import { POSTGRES_URL } from '$env/static/private';
 
 export async function load() {
   const db = createPool({ connectionString: POSTGRES_URL });
