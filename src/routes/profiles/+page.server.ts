@@ -1,7 +1,12 @@
 import { createPool } from '@vercel/postgres';
-import { POSTGRES_URL } from '$env/static/private';
+
+const POSTGRES_URL = import.meta.env.VITE_POSTGRES_URL;
 
 export async function load() {
+  if (!POSTGRES_URL) {
+    throw new Error('POSTGRES_URL environment variable is not set.');
+  }
+
   const db = createPool({ connectionString: POSTGRES_URL });
 
   try {
@@ -10,12 +15,8 @@ export async function load() {
       names,
     };
   } catch (error) {
-    console.log('Table does not exist, creating and seeding it with dummy data now...');
-    await seed();
-    const { rows: names } = await db.query('SELECT * FROM names');
-    return {
-      users: names,
-    };
+    console.error('Error loading data:', error);
+    throw error;
   }
 }
 
@@ -31,7 +32,7 @@ async function seed() {
     );
   `;
 
-  console.log(`Created "users" table`);
+  console.log(`Created "names" table`);
 
   const users = await Promise.all([
     client.sql`
