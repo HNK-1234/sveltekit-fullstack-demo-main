@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Table from "./Table.svelte";
+  import Table from "../../lib/Table.svelte";
 
   /** @type {import('./$types').PageData} */
   export let data;
