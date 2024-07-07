@@ -2,6 +2,7 @@ import { createPool } from '@vercel/postgres';
 import { POSTGRES_URL } from '$env/static/private';
 
 export async function load() {
+  console.log('POSTGRES_URL:', POSTGRES_URL); // Debug log to verify
   const db = createPool({ connectionString: POSTGRES_URL });
 
   try {
