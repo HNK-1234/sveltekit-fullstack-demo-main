@@ -13,7 +13,7 @@
 			</p>
 		</div>
 	</div>
-	<div class="divide-y divide-gray-900/5">.
+	<div class="divide-y divide-gray-900/5">
 		{#each names as user (user.id)}
 			<div class="flex items-center justify-between py-3">
 				<div class="flex items-center space-x-4">
