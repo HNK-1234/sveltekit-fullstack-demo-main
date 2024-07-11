@@ -108,7 +108,7 @@
         Bounty was unlocked successfully: <a
           class="text-indigo-500 underline font-semibold"
           target="_blank"
-          href={`https://whatsonchain.com/tx/${form?.txid}`}>Trasaction Link</a
+          href={`https://whatsonchain.com/tx/${form?.txid}`}>Transaction Link</a
         >!
       </p>
     {:else if form?.success === false}
